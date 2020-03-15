@@ -5,15 +5,15 @@ import br.com.carc2ccadastro.repository.CarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CarroService {
 
     @Autowired
-    private CarroRepository carroRepository;
+    CarroRepository carroRepository;
 
-    public Carro getCarroById(Long id){
-        return carroRepository.getOne(id);
+    public List<Carro> getAllCars(){
+       return carroRepository.findAll();
     }
-
-
 }
