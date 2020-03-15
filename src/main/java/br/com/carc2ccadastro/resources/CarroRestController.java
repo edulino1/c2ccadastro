@@ -17,7 +17,8 @@ public class CarroRestController {
 
     @GetMapping("/carro/{id}")
     public ResponseEntity<Carro> getCarroByUuid(@PathVariable("id") Long id){
-         return ResponseEntity.ok(carroService.getCarroById(id));
+        // return ResponseEntity.ok(carroService.getAllCars(id));
+        return null;
     }
 
 
