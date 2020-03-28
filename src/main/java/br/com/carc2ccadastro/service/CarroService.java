@@ -11,9 +11,13 @@ import java.util.List;
 public class CarroService {
 
     @Autowired
-    CarroRepository carroRepository;
+    private CarroRepository carroRepository;
 
     public List<Carro> getAllCars(){
        return carroRepository.findAll();
+    }
+
+    public Carro postCarro(Carro carro){
+        return carroRepository.save(carro);
     }
 }
