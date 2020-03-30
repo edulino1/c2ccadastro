@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title> Car C2C </title>
+    <link rel="stylesheet" href="static/style.css" >
+</head>
+<body>
+<div id="formulario">
+    <form th:action="@{/save}" method="post">
+        <div class="campo">
+            <label id="carro">Nome</label>
+            <input type="text" maxlength="100" th:name="nome" placeholder="Ex: HB20, Voyage, Onix..." required>
+        </div>
+        <div class="campo">
+            <label id="modelo">Modelo</label>
+            <input type="text" maxlength="11" th:name="modelo" placeholder="Ex: Hyundai, Volkswagen, Chevrolet..." required>
+        </div>
+        <div class="campo">
+            <label id="tipo">Tipo do carro</label>
+            <input type="text" th:name="tipo" placeholder="Sedan, Hatch, Suv..." required>
+        </div>
+        <div class="campo">
+            <label>Placa</label>
+            <input th:name="placa" type="text" placeholder="Digite a placa do carro" required/>
+        </div>
+        <div class="campo">
+            <label>Cor</label>
+            <input th:name="cor" type="text" id="cor" required/>
+        </div>
+        <div class="campo">
+            <label>Descricao</label>
+            <input th:name="descricao" type="text" id="descricao" required/>
+        </div>
+
+        <input type="submit" value="Cadastrar">
+
+    </form>
+</div>
+</html>
