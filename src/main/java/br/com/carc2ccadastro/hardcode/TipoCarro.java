@@ -11,7 +11,11 @@ public enum TipoCarro {
 
     private String descricao;
 
-    private TipoCarro(String descricao){
+     private TipoCarro(String descricao){
         this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 }
