@@ -2,10 +2,7 @@ package br.com.carc2ccadastro.domain;
 
 import br.com.carc2ccadastro.hardcode.TipoCarro;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Carro {
@@ -18,6 +15,7 @@ public class Carro {
 
     private String modelo;
 
+    @Enumerated(EnumType.STRING)
     private TipoCarro tipo;
 
     private String placa;
