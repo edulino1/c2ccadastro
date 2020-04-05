@@ -2,11 +2,18 @@
 <head>
     <meta charset="UTF-8" />
     <title> Car C2C </title>
-    <link rel="stylesheet" href="static/style.css" >
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+<ul>
+    <li><a class="active" href="#">Novo Carro</a></li>
+    <li><a href="listar">Listar Carros</a></li>
+</ul>
+
+
 <div id="formulario">
-    <form th:action="@{/save}" method="post">
+    <form th:action="@{/}" method="POST">
         <div class="campo">
             <label id="carro">Nome</label>
             <input type="text" maxlength="100" th:name="nome" placeholder="Ex: HB20, Voyage, Onix..." required>
@@ -17,7 +24,9 @@
         </div>
         <div class="campo">
             <label id="tipo">Tipo do carro</label>
-            <input type="text" th:name="tipo" placeholder="Sedan, Hatch, Suv..." required>
+            <select th:name="tipo">
+                <option th:each="tipoCarro : ${T(br.com.carc2ccadastro.hardcode.TipoCarro).values()}" th:value="${tipoCarro}" th:text="${tipoCarro.descricao}" >Apple</option>
+            </select>
         </div>
         <div class="campo">
             <label>Placa</label>
@@ -36,4 +45,5 @@
 
     </form>
 </div>
+</body>
 </html>

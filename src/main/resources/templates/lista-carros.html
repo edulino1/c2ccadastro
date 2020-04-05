@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title> Car C2C </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<ul>
+    <li><a href="/">Novo Carro</a></li>
+    <li><a class="active" href="#">Listar Carros</a></li>
+</ul>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>Modelo</th>
+        <th>Tipo Carro</th>
+        <th>Placa</th>w
+        <th>Cor</th>
+        <th>Descricao</th>
+    </tr>
+
+    <tr th:each="carro : ${listaCarros}">
+        <td th:text="${carro.nome}"> Nome </td>
+        <td th:text="${carro.modelo}"> Modelo </td>
+        <td th:text="${carro.tipo.descricao}"> Tipo </td>
+        <td th:text="${carro.placa}"> Placa </td>
+        <td th:text="${carro.cor}"> Cor </td>
+        <td th:text="${carro.descricao}"> Descricao </td>
+    </tr>
+
+</table>
+
+</body>
+
+</html>
