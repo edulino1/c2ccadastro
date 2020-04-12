@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class IndexController {
@@ -33,7 +35,7 @@ public class IndexController {
     }
 
     @PostMapping("/")
-    public String postIndex(Model model, Carro carro, BindingResult bindingResult){
+    public String postIndex(Model model, Carro carro,  BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
             return "Erro ao salvar!";
@@ -43,5 +45,20 @@ public class IndexController {
 
         return "redirect:/";
    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteIndex(@PathVariable("id") Long id) {
+
+        Optional<Carro> carroExiste = carroService.getCarroById(id);
+
+        if(carroExiste.isPresent()){
+
+            carroService.deletarCarro(id);
+
+        }
+
+        return "redirect:/listar";
+
+    }
 
 }
