@@ -97,9 +97,8 @@ ul {
   padding: 0;
   width: 15%;
   background-color: #f1f1f1;
-  position: fixed;
+  position: absolute;
   height: 100%;
-  overflow: auto;
 }
 
 li a {
@@ -125,7 +124,7 @@ table {
 }
 
 th, td {
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
@@ -133,5 +132,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 
 .text-center{
-text-align:center;
+    margin: 0 auto;
+    width: 1000px;
+    text-align:center;
 }

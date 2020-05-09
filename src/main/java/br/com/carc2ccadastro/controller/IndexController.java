@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,13 +36,15 @@ public class IndexController {
     }
 
     @PostMapping("/")
-    public String postIndex(Model model, Carro carro,  BindingResult bindingResult){
+    public String postIndex(Model model, Carro carro, BindingResult bindingResult, RedirectAttributes attributes){
 
         if(bindingResult.hasErrors()){
             return "Erro ao salvar!";
         }
 
         carroService.postCarro(carro);
+
+        attributes.addFlashAttribute("success", "Cadastrado com sucesso");
 
         return "redirect:/";
    }

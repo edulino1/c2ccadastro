@@ -11,7 +11,7 @@ public class Carro {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
+    private String marca;
 
     private String modelo;
 
@@ -32,12 +32,12 @@ public class Carro {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public String getModelo() {

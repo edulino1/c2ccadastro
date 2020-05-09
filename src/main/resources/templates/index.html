@@ -15,12 +15,12 @@
 <div id="formulario">
     <form th:action="@{/}" method="POST">
         <div class="campo">
-            <label id="carro">Nome</label>
-            <input type="text" maxlength="100" th:name="nome" placeholder="Ex: HB20, Voyage, Onix..." required>
+            <label id="carro">Marca</label>
+            <input type="text" maxlength="100" th:name="marca" placeholder="Ex: Hyundai, Volkswagen, Chevrolet..." required>
         </div>
         <div class="campo">
             <label id="modelo">Modelo</label>
-            <input type="text" maxlength="11" th:name="modelo" placeholder="Ex: Hyundai, Volkswagen, Chevrolet..." required>
+            <input type="text" maxlength="11" th:name="modelo" placeholder="Ex: HB20, Voyage, Onix..." required>
         </div>
         <div class="campo">
             <label id="tipo">Tipo do carro</label>
@@ -42,8 +42,10 @@
         </div>
 
         <input type="submit" value="Cadastrar">
-
     </form>
+
+    <span th:object="${success}" />
+
 </div>
 </body>
 </html>

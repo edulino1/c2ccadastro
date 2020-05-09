@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title> Car C2C </title>
     <link rel="stylesheet" type="text/css" th:href="style.css">
 </head>
@@ -13,38 +13,41 @@
     <li><a class="active" href="#">Listar Carros</a></li>
 </ul>
 
-<table th:if="${!listaCarros.isEmpty()}">
-    <tr>
-        <th>Nome</th>
-        <th>Modelo</th>
-        <th>Tipo Carro</th>
-        <th>Placa</th>w
-        <th>Cor</th>
-        <th>Descricao</th>
-        <th>Ação</th>
-    </tr>
 
-    <tr th:each="carro : ${listaCarros}">
+<div class="text-center">
+    <table th:if="${!listaCarros.isEmpty()}">
+        <tr>
+            <th>Nome</th>
+            <th>Modelo</th>
+            <th>Tipo Carro</th>
+            <th>Placa</th>
+            <th>Cor</th>
+            <th>Descricao</th>
+            <th>Ação</th>
+        </tr>
 
-        <td th:text="${carro.nome}"> Nome </td>
-        <td th:text="${carro.modelo}"> Modelo </td>
-        <td th:text="${carro.tipo.descricao}"> Tipo </td>
-        <td th:text="${carro.placa}"> Placa </td>
-        <td th:text="${carro.cor}"> Cor </td>
-        <td th:text="${carro.descricao}"> Descricao </td>
-        <td>
-            <form  th:action="@{|/delete/${carro.id}|}" th:method="POST">
-                <input type="submit" th:value="Excluir">
-            </form>
-        </td>
+        <tr th:each="carro : ${listaCarros}">
 
-    </tr>
-</table>
+            <td th:text="${carro.modelo}"> Nome</td>
+            <td th:text="${carro.marca}"> Modelo</td>
+            <td th:text="${carro.tipo.descricao}"> Tipo</td>
+            <td th:text="${carro.placa}"> Placa</td>
+            <td th:text="${carro.cor}"> Cor</td>
+            <td th:text="${carro.descricao}"> Descricao</td>
+            <td>
+                <form th:action="@{|/delete/${carro.id}|}" th:method="POST">
+                    <input type="submit" th:value="Excluir">
+                </form>
+            </td>
 
-<div style="text-align: center;">
-    <span th:if="${listaCarros.isEmpty()}"> Não temos nenhum carro cadastrado. </span>
+        </tr>
+    </table>
+
+    <div style="text-align: center;">
+        <span th:if="${listaCarros.isEmpty()}"> Não temos nenhum carro cadastrado. </span>
+    </div>
+
 </div>
-
 
 
 </body>
