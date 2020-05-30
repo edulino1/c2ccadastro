@@ -1,6 +1,7 @@
 package br.com.carc2ccadastro.controller;
 
 import br.com.carc2ccadastro.domain.Carro;
+import br.com.carc2ccadastro.security.LoginSecurity;
 import br.com.carc2ccadastro.service.CarroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,21 +17,35 @@ import java.util.Optional;
 
 @Controller
 public class IndexController {
-
+    
     @Autowired
     private CarroService carroService;
 
     @GetMapping("/")
     public String getIndex(Model model, Carro carro){
-        return "index";
-    }
 
+        if(LoginSecurity.logado){
+    
+            model.addAttribute("usuario", LoginSecurity.usuario);
+            
+            return "index";
+        }
+
+        return "redirect:/login";
+    }
+    
     @GetMapping("/listar")
     public String getLista(Model model, Carro carro){
 
-        List<Carro> listaCarros = carroService.getAllCars();
+        if(!LoginSecurity.logado){
+            return "redirect:/login";
+        }
+        
+        List<Carro> listaCarros = carroService.findListCarByLogin(LoginSecurity.usuario.getId());
 
         model.addAttribute("listaCarros", listaCarros);
+        
+        model.addAttribute("usuario", LoginSecurity.usuario);
 
         return "lista-carros";
     }
@@ -41,12 +56,14 @@ public class IndexController {
         if(bindingResult.hasErrors()){
             return "Erro ao salvar!";
         }
+        
+        carro.setUsuarioId(LoginSecurity.usuario.getId());
 
         carroService.postCarro(carro);
 
         attributes.addFlashAttribute("success", "Cadastrado com sucesso");
 
-        return "redirect:/";
+        return "redirect:/listar";
    }
 
     @PostMapping("/delete/{id}")
@@ -59,9 +76,18 @@ public class IndexController {
             carroService.deletarCarro(id);
 
         }
-
+        
         return "redirect:/listar";
 
+    }
+    
+    @GetMapping("/sair")
+    public String getLogout(){
+        
+        LoginSecurity.logado = Boolean.FALSE;
+        
+        return "redirect:/login";
+        
     }
 
 }
