@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title> Car C2C </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div id="formulario">
+
+    <form action="/login" method="post">
+        <div class="campo">
+            <label id="carro">Login</label>
+            <input name="login" type="text" maxlength="100" placeholder="Login" required />
+        </div>
+
+        <div class="campo">
+            <label id="modelo">Senha</label>
+            <input name="password"  maxlength="11" type="password" placeholder="Senha" required />
+        </div>
+
+        <input type="submit" value="Logar" />
+        <input th:formaction="@{/cadastrar}" type="submit" value="Cadastar" />
+
+        <span th:if="${#bools.isTrue(usuarioCadastradoFeedback)}"> Usuario já existe! </span>
+        <span th:if="${#bools.isTrue(dadosFeedback)}"> Dados não conferem </span>
+
+    </form>
+
+
+
+</div>
+</body>
+</html>

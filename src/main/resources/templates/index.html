@@ -7,8 +7,10 @@
 <body>
 
 <ul>
+    <li> <a href="/"> Bem Vindo: <span style="font-weight:bold;" th:text="${T(br.com.carc2ccadastro.security.LoginSecurity).usuario.login}">> Rogerinho Nunes </span>  </a> </li>
     <li><a class="active" href="#">Novo Carro</a></li>
-    <li><a href="listar">Listar Carros</a></li>
+    <li><a href="listar">Meus Carros</a></li>
+    <li> <a th:href="@{/sair}"> Sair </a></li>
 </ul>
 
 
