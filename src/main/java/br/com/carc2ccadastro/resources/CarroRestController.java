@@ -22,7 +22,7 @@ public class CarroRestController {
     @GetMapping("/carros")
     public ResponseEntity<List<Carro>> getAllCarros(){
 
-        List<Carro> carro = carroService.getAllCars();
+        List<Carro> carro = carroService.findAllCars();
 
         return new ResponseEntity<>(carro, HttpStatus.OK);
     }
