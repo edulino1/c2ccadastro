@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <title> Car C2C </title>
+    <title> Car C2C Cadastro </title>
     <link rel="stylesheet" type="text/css" th:href="style.css">
 </head>
 
@@ -25,6 +25,7 @@
             <th>Placa</th>
             <th>Cor</th>
             <th>Descricao</th>
+            <th>Status</th>
             <th>Ação</th>
         </tr>
 
@@ -36,6 +37,10 @@
             <td th:text="${carro.placa}"> Placa</td>
             <td th:text="${carro.cor}"> Cor</td>
             <td th:text="${carro.descricao}"> Descricao</td>
+            <td>
+                <span th:if="${#bools.isTrue(carro.statusCarro)}"> Alugado! </span>
+                <span th:if="${#bools.isFalse(carro.statusCarro)}"> Não Alugado! </span>
+            </td>
             <td>
                 <form th:action="@{|/delete/${carro.id}|}" th:method="POST">
                     <input type="submit" th:value="Excluir">
