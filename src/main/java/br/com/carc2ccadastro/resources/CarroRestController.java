@@ -34,7 +34,35 @@ public class CarroRestController {
 
         return new ResponseEntity<>(carro, HttpStatus.CREATED);
     }
-
+    
+    @PostMapping("/carro/salvar/status")
+    public ResponseEntity<Carro> postCarroStatus(Carro carroNewStatus) {
+    
+        try {
+    
+            Optional<Carro> carroOld = carroService.getCarroById(carroNewStatus.getId());
+        
+            carroOld.get().setStatusCarro(carroNewStatus.getStatusCarro());
+            
+            carroOld.get().setUsuarioAluguelId(carroNewStatus.getUsuarioAluguelId());
+            
+            carroService.postCarro(carroOld.get());
+        
+            return new ResponseEntity<>(carroOld.get(), HttpStatus.CREATED);
+        
+        } catch (Exception e) {
+            return new ResponseEntity<>(carroNewStatus, HttpStatus.BAD_REQUEST);
+        }
+    }
+    
+    
+    @GetMapping("/carro/aluguel/{usuarioAluguelId}")
+    public ResponseEntity<List<Carro>> getCarByUsuarioAluguelId(@PathVariable("usuarioAluguelId") Long usuarioAluguelId){
+        
+        List<Carro> carro = carroService.findCarByUsuarioAluguelId(usuarioAluguelId);
+        
+        return new ResponseEntity<>(carro, HttpStatus.OK);
+    }
 
     @DeleteMapping("/carro/excluir/{id}")
     public ResponseEntity<Carro> deletarCarro(@PathVariable("id") Long id, Carro carro){
