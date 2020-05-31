@@ -37,4 +37,8 @@ public class CarroService {
     public void deletarCarro(Long id){
         carroRepository.deleteById(id);
     }
+    
+    public List<Carro> findCarByUsuarioAluguelId(Long usuarioAluguelId){
+        return carroDAO.findCarroByUsuarioAluguelId(usuarioAluguelId);
+    };
 }
