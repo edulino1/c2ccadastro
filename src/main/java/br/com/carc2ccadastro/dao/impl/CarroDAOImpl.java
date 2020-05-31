@@ -24,4 +24,12 @@ public class CarroDAOImpl implements CarroDAO {
 	
 		return this.jdbcTemplate.query(sql, new Object[] {usuarioId}, new BeanPropertyRowMapper<>(Carro.class));
 	}
+	
+	@Override
+	public List<Carro> findCarroByUsuarioAluguelId(Long usuarioAluguelId) {
+		
+		String sql = "SELECT ID, COR, DESCRICAO, MARCA, MODELO, PLACA, TIPO, USUARIO_ID as usuarioId, STATUS_CARRO as statusCarro, USUARIO_ALUGUEL_ID as usuarioAluguelId FROM CARRO where USUARIO_ALUGUEL_ID = ?";
+		
+		return this.jdbcTemplate.query(sql, new Object[] {usuarioAluguelId}, new BeanPropertyRowMapper<>(Carro.class));
+	}
 }
