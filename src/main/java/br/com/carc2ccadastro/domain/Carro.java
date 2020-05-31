@@ -26,7 +26,9 @@ public class Carro {
     
     private Long usuarioId;
     
-    private Boolean statusCarro;
+    private Boolean statusCarro = Boolean.FALSE;
+    
+    private Long usuarioAluguelId;
     
     public Long getId() {
         return id;
@@ -98,6 +100,14 @@ public class Carro {
     
     public void setStatusCarro(Boolean statusCarro) {
         this.statusCarro = statusCarro;
+    }
+    
+    public Long getUsuarioAluguelId() {
+        return usuarioAluguelId;
+    }
+    
+    public void setUsuarioAluguelId(Long usuarioAluguelId) {
+        this.usuarioAluguelId = usuarioAluguelId;
     }
 }
 
