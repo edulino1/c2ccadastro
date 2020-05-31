@@ -33,13 +33,14 @@ public class LoginController {
 		Usuario usuarioExiste = usuarioService.findUsuarioByLogin(usuario.getLogin());
 		
 		if(usuarioExiste != null){
-			
-			LoginSecurity.logado = true;
-			
-			LoginSecurity.usuario = usuarioExiste;
-			
-			return "redirect:/";
-			
+			if(usuarioExiste.getPassword().equals(usuario.getPassword())) {
+				
+				LoginSecurity.logado = true;
+				
+				LoginSecurity.usuario = usuarioExiste;
+				
+				return "redirect:/";
+			}
 		}
 		
 		model.addAttribute("dadosFeedback", true);
